@@ -1,4 +1,7 @@
 # leixien.github.io
 
-Pagina principale di [leixien.github.io](https://leixien.github.io/): i miei progetti, come
-[Rovistino](https://leixien.github.io/Rovistino/).
+Il mio sito personale, in italiano e in inglese: chi sono, i miei progetti (come
+[Rovistino](https://leixien.github.io/Rovistino/)) e i link.
+
+Stile e idee vengono dalla prima versione del sito ([mywebsite](https://github.com/Leixien/mywebsite)):
+tema scuro, font monospace, la testa che gira e l'erba in pixel art.
