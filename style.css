@@ -42,16 +42,50 @@ body {
   background: var(--bg);
   color: var(--ink);
   font: 700 0.9375rem/1.7 "JetBrains Mono", ui-monospace, monospace;
+  /* layout follows the body width, so the phone/desktop switch can narrow it */
+  container-type: inline-size;
 }
+
+/* forced phone view on a wide screen */
+html[data-view="mobile"] { background: var(--line); }
+html[data-view="mobile"] body { max-width: 26rem; margin: 0 auto; }
 
 a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.25em; }
 a:hover { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-.lang { display: flex; justify-content: flex-end; gap: 0.75rem; max-width: 42rem; width: 100%; margin: 0 auto; padding: 1rem 1rem 0; font-size: 0.875rem; }
-.lang [aria-current] { color: var(--accent); text-decoration: none; }
+/* top bar: language, view switch and its one-time tip */
+.bar { position: relative; display: flex; justify-content: flex-end; align-items: center; gap: 0.75rem; max-width: 56rem; width: 100%; margin: 0 auto; padding: 1rem 1rem 0; font-size: 0.875rem; }
+.bar [aria-current] { color: var(--accent); text-decoration: none; }
+.view-switch, .tip button, .copy {
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.view-switch:hover, .copy:hover { border-color: var(--accent); }
+.tip {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 1rem;
+  z-index: 1;
+  width: min(19rem, calc(100cqi - 2rem));
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  text-align: left;
+}
+.tip p { margin: 0 0 0.75rem; }
 
-main { flex: 1; width: 100%; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 2rem; text-align: center; }
+main { flex: 1; width: 100%; max-width: 56rem; margin: 0 auto; padding: 1.5rem 1rem 2rem; text-align: center; }
+.intro { max-width: 40rem; margin: 0 auto; }
 
 /* The head that spins, from the first version. */
 .head { display: inline-block; margin-top: 1rem; }
@@ -60,21 +94,26 @@ main { flex: 1; width: 100%; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1
 @media (prefers-reduced-motion: reduce) { .head img { transition: none; } }
 
 h1, h2 { font-family: "Inconsolata", ui-monospace, monospace; font-weight: 700; letter-spacing: -0.01em; }
-h1 { font-size: clamp(2rem, 8vw, 2.75rem); line-height: 1.1; margin: 0.75rem 0 1.25rem; }
+h1 { font-size: clamp(2rem, 8cqi, 2.75rem); line-height: 1.1; margin: 0.75rem 0 1.25rem; }
 h2 { font-size: 1.75rem; margin: 3rem 0 1rem; }
 .intro p { margin: 0 0 0.6rem; }
 .intro .muted { color: var(--muted); }
+.projects + .intro { margin-top: 1.25rem; }
 
-.projects, .links { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 0.75rem; text-align: left; max-width: 36rem; }
-.projects a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 0.75rem; padding: 0.9rem 1rem; text-decoration: none; }
-.projects a:hover { border-color: var(--accent); color: inherit; }
-.projects b { display: block; font-family: "Inconsolata", ui-monospace, monospace; font-size: 1.25rem; }
-.projects b::after { content: " →"; color: var(--accent); }
-.projects span { display: block; color: var(--muted); font-size: 0.875rem; line-height: 1.55; }
-
-.links { text-align: center; gap: 0.4rem; font-size: 1.125rem; }
-.links a::after { content: " →"; color: var(--accent); }
-.links code { display: block; font: inherit; font-size: 0.75rem; color: var(--muted); word-break: break-all; }
+/* projects and links share the card look: one column on phones, more on wide screens */
+.projects, .links { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 0.75rem; text-align: left; }
+@container (min-width: 44rem) {
+  .projects { grid-template-columns: 1fr 1fr; }
+  .projects li:last-child:nth-child(odd) { grid-column: 1 / -1; }  /* no half-empty last row */
+  .links { grid-template-columns: repeat(3, 1fr); }
+}
+.projects a, .links a, .links .eth { display: block; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 0.75rem; padding: 0.9rem 1rem; text-decoration: none; }
+.projects a:hover, .links a:hover { border-color: var(--accent); color: inherit; }
+.projects b, .links b { display: block; font-family: "Inconsolata", ui-monospace, monospace; font-size: 1.25rem; }
+.projects a b::after, .links a b::after { content: " →"; color: var(--accent); }
+.projects span, .links span { display: block; color: var(--muted); font-size: 0.875rem; line-height: 1.55; }
+.links .eth { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.links .eth span { overflow: hidden; text-overflow: ellipsis; }
 
 footer { text-align: center; padding: 1rem 1rem 0; font-size: 0.875rem; color: var(--muted); }
 footer p { margin: 0 0 0.4rem; }
