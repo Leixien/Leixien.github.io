@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leixien.github.io/sitemap.xml
+Sitemap: https://leixien.github.io/Rovistino/sitemap.xml
