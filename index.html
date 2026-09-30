@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Leixien – Strumenti gratuiti</title>
-  <meta name="description" content="Strumenti gratuiti che risolvono piccoli problemi di tutti i giorni, come Rovistino, il bot Telegram per cercare annunci dell'usato.">
+  <meta name="description" content="Strumenti gratuiti di Leixien: Rovistino per gli annunci dell'usato, un bot Telegram per i prezzi Amazon, un'estensione Safari per Salesforce, guide e traduzioni.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://leixien.github.io/">
   <meta property="og:title" content="Leixien – Strumenti gratuiti">
@@ -43,9 +43,11 @@
     h1 { font-size: clamp(2.4rem, 8vw, 3.5rem); line-height: 1.05; margin: 0 0 1rem; letter-spacing: -0.02em; }
     .lede { color: var(--muted); font-size: 1.25rem; margin: 0 0 3rem; }
     h2 { font-size: 1.25rem; margin: 0 0 1rem; }
+    .projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
     .project { display: flex; gap: 1rem; align-items: center; background: var(--card); border-radius: 1rem; padding: 1rem 1.25rem; text-decoration: none; }
-    .project img { width: 3.5rem; height: 3.5rem; border-radius: 0.8rem; flex-shrink: 0; }
-    .project b { display: block; font-size: 1.125rem; }
+    .project img, .badge { width: 3.5rem; height: 3.5rem; border-radius: 0.8rem; flex-shrink: 0; }
+    .project .badge { display: grid; place-items: center; background: var(--tag); color: #2a2113; font: 1.6rem/1 "Caveat Brush", cursive; }
+    .project b { display: block; font-size: 1.125rem; color: var(--ink); }
     .project span { color: var(--muted); font-size: 1rem; line-height: 1.45; }
     .more { margin: 1.5rem 0 0; color: var(--muted); }
     footer { max-width: 40rem; margin: 0 auto; padding: 2rem 1rem 3rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; color: var(--muted); font-size: 1rem; border-top: 1px solid var(--line); }
@@ -57,10 +59,28 @@
     <p class="lede">Nel tempo libero costruisco strumenti gratuiti che risolvono piccoli problemi di tutti i giorni. Senza pubblicità e senza abbonamenti.</p>
 
     <h2>Progetti</h2>
-    <a class="project" href="Rovistino/">
-      <img src="favicon-192.png" alt="">
-      <span><b>Rovistino</b>Bot Telegram che cerca annunci dell'usato su Subito, Wallapop e Vinted, con avvisi per le novità e i ribassi.</span>
-    </a>
+    <ul class="projects">
+      <li><a class="project" href="Rovistino/">
+        <img src="favicon-192.png" alt="">
+        <span><b>Rovistino</b>Bot Telegram che cerca annunci dell'usato su Subito, Wallapop e Vinted, con avvisi per le novità e i ribassi.</span>
+      </a></li>
+      <li><a class="project" href="https://github.com/Leixien/TrackerPriceAmazon-Bot">
+        <span class="badge" aria-hidden="true">€</span>
+        <span><b>TrackerPriceAmazon-Bot</b>Bot Telegram che controlla il prezzo dei prodotti Amazon: li salvi e ricontrolli il prezzo con un tocco, anche sugli Amazon di altri paesi.</span>
+      </a></li>
+      <li><a class="project" href="SF-Quick-Login-Safari-Extension/">
+        <span class="badge" aria-hidden="true">SF</span>
+        <span><b>SF Quick Login</b>Estensione Safari per macOS per entrare in qualsiasi org Salesforce con un clic. In arrivo sul Mac App Store.</span>
+      </a></li>
+      <li><a class="project" href="https://github.com/Leixien/raspberry-openproject-guide">
+        <span class="badge" aria-hidden="true">Pi</span>
+        <span><b>OpenProject su Raspberry Pi</b>Guida passo passo, pensata per chi non ha mai usato un Raspberry, per trasformarlo in un server di gestione progetti.</span>
+      </a></li>
+      <li><a class="project" href="https://github.com/Leixien/PokemonFireAsh-ITA">
+        <span class="badge" aria-hidden="true">IT</span>
+        <span><b>Pokémon Fire Ash in italiano</b>Traduzione italiana non ufficiale del fan game Pokémon Fire Ash, con un patcher che la applica in automatico.</span>
+      </a></li>
+    </ul>
     <p class="more">Gli altri progetti sono su <a href="https://github.com/Leixien">GitHub</a>.</p>
   </main>
 
